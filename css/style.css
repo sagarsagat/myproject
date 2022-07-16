@@ -650,6 +650,12 @@ img {
 
 
 
-
-
-
+  
+	#nd{
+         background: linear-gradient(rgba(190, 128, 219, 0.85), rgba(62, 41, 167, 0.85));
+	}
+	.modal-body{
+	background-color:#e7ecf5;}
+	#rd{
+	
+	}
