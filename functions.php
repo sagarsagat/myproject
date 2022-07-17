@@ -55,7 +55,7 @@ function ad_check($role){
 }
 function qr_g($na){
 	include('phpqrcode/qrlib.php');
-	$path='qrimg/';
+	$path="th_dash/qrimg/";
 	$file=$path.uniqid().".png";
 	$ps=10;
 	$fs=10;

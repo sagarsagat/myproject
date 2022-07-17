@@ -19,7 +19,7 @@
 			$hash=password_hash($password,PASSWORD_DEFAULT);
 			$user_id = random_num(20);
 			$query = "insert into users (user_id,user_name,role,user_email,password) values ('$user_id','$user_name','$role','$user_email','$hash')";
-			$ob=" username :".$user_name."\n password :".$password;
+			$ob=" username :".$user_name."\n User_email:".$user_email."\n password :".$password;
 			$path=qr_g($ob);
 			$q2="insert into qr_d (user_id,user_name,qr_path) values ('$user_id','$user_name','$path')";
 			mysqli_query($con, $query);

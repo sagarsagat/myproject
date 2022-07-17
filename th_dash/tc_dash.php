@@ -25,6 +25,7 @@ session_start();
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/master.css" rel="stylesheet">
     <link href="assets/vendor/flagiconcss/css/flag-icon.min.css" rel="stylesheet">
+
     
 </head>
 
@@ -43,7 +44,7 @@ session_start();
                     <a href="forms.php"><i class="fas fa-file-alt"></i>Create Blog</a>
                 </li>
                 <li>
-                    <a href="forms.php"><i class="fas fa-file-alt"></i>QR Code Generator</a>
+                    <a href="qrc.php"><i class="fas fa-file-alt"></i>QR Code Generator</a>
                 </li>
                 
             </ul>
