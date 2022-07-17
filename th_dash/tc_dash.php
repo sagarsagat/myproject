@@ -42,6 +42,9 @@ session_start();
                 <li>
                     <a href="forms.php"><i class="fas fa-file-alt"></i>Create Blog</a>
                 </li>
+                <li>
+                    <a href="forms.php"><i class="fas fa-file-alt"></i>QR Code Generator</a>
+                </li>
                 
             </ul>
                
