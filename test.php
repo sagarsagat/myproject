@@ -39,8 +39,8 @@
              
                 while($row = mysqli_fetch_assoc($result)){      
 
-                    echo "<tr><th>1</th><th>{$row["user_id"]}</th><th>{$row["user_name"]}</th>";
-                    <th>{$row["qr_path"]}</th><th><img src="{$row["qr_path"]}" width="50px" height="50px" ></th>
+                    echo "<tr><th>1</th><th>{$row['user_id']}</th><th>{$row['user_name']}</th>
+                    <th> {$row['qr_path']}</th><th><img src='{$row['qr_path']}' width='50px' height='50px' ></th><th><button type='button' class='btn btn-primary' ><a href='{$row['qr_path']}'>download</a></button></th>
                     </tr> \n ";
 
                  
@@ -51,7 +51,7 @@
                   ?>
                 </tbody>
             </table>
-            
+            <a href=""></a>
     </div>          
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
