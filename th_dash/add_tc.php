@@ -5,9 +5,49 @@ session_start();
 	include("../functions.php");
 
 	$user_data = check_login($con);
+    ad_check($_SESSION['role']);
     
-    
+    if($_SERVER['REQUEST_METHOD'] == "POST")
+	{
+		//something was posted
+		$user_name = $_POST['name'];
+		 $user_email = $_POST['email'];
+		
+		$password = $_POST['password'];
 
+		if(!empty($user_name) && !empty($password) && !is_numeric($user_name))
+		{
+
+			//save to database
+			$hash=password_hash($password,PASSWORD_DEFAULT);
+			$user_id = random_num(20);
+			$query = "insert into users (user_id,user_name,role,user_email,password) values ('$user_id','$user_name','teacher','$user_email','$hash')";
+			$ob=" username :".$user_name."\n User_email:".$user_email."\n password :".$password;
+			$path=qr_g($ob);
+			$q2="insert into qr_d (user_id,user_name,qr_path) values ('$user_id','$user_name','$path')";
+            mysqli_query($con, $query);
+            mysqli_query($con,$q2);
+			header("Location: tc_dash.php");
+			die;
+		}else
+		{
+			echo "Please enter some valid information!";
+		}
+	}
+
+    
+function qr_g($na){
+	include('../phpqrcode/qrlib.php');
+	$path="";
+	$file=$path.uniqid().".png";
+	$ps=10;
+	$fs=10;
+	$ec='L';
+	QRcode::png($na,$file,$ec,$ps,$fs);
+	return $file;
+
+}
+    
 
 ?>
 <!doctype html>
@@ -77,50 +117,52 @@ session_start();
             <div class="content">
                 <div class="container">
                     <div class="page-title">
-                        <h3>Theory Notes</h3>
+                        <h3>Teacher Account</h3>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
-                                <div class="card-header">Upload <div><?php
-                                    if (isset($_SESSION['message']) && $_SESSION['message'])
-                                    {
-                                      printf('<b>%s</b>', $_SESSION['message']);
-                                      unset($_SESSION['message']);
-                                         }
-                                     ?></div></div>
+                                <div class="card-header">Create account <div></div></div>
                                 <div class="card-body">
                                 
-                                    <form accept-charset="utf-8" method="POST" action="upload.php" enctype="multipart/form-data">
-                                        <div class="mb-3">
-                                            <label for="nn" class="form-label">Name of notes</label>
-                                            <input type="text" name="nn" placeholder="Notes" class="form-control" required>
-                                        </div>
-                                        <div class="mb-3">
-								        <label class="mb-2 text-muted" for="sub">Subject:</label>
-								        <select class="form-control" name="sub" required>
-  								        <option value="">Choose one</option>
-								        <option value="DBMS">DBMS</option>
-								        <option value="C++">C++</option>
-                                        <option value="Java">Java</option>
-                                        <option value="HTML">HTML</option>
-								        </select>
-									        <div class="invalid-feedback">
-										Please choose any one
-									    </div>
-								        </div>
-                                        <div class="mb-3">
-                                            <label for="dc" class="form-label">Description</label>
-                                            <input type="text" name="dc" placeholder="Detailed-Description" class="form-control" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="uploadedFile" class="form-label">Select</label>
-                                            <input class="form-control form-control-sm" name="uploadedFile"   id="formFileSm" type="file"  accept="application/pdf" required  />
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="submit" class="btn btn-primary" name="uploadBtn" value="Upload">
-                                        </div>
-                                    </form>
+                                    <form accept-charset="utf-8" method="POST" action="" enctype="multipart/form-data">
+                                    
+                                    
+                                    <div class="mb-3">
+									<label class="mb-2 text-muted" for="name">Name</label>
+									<input id="name" type="text" class="form-control" name="name" value="" required autofocus>
+									<div class="invalid-feedback">
+										Name is required	
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="email">E-Mail Address</label>
+									<input id="email" type="email" class="form-control" name="email" value="" required>
+									<div class="invalid-feedback">
+										Email is invalid
+									</div>
+								</div>
+								
+
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="password">Password</label>
+									<input id="password" type="password" class="form-control" name="password" required>
+								    <div class="invalid-feedback">
+								    	Password is required
+							    	</div>
+								</div>
+
+								<p class="form-text text-muted mb-3">
+									By registering you agree with our terms and condition.
+								</p>
+
+								<div class="align-items-center d-flex">
+									<button type="submit" class="btn btn-primary ms-auto" >
+										Register	
+									</button>
+								</div>
+							                                  </form>
     
     
                                 </div>
@@ -144,3 +186,7 @@ session_start();
 </body>
 
 </html>
+
+<?php
+
+    ?>

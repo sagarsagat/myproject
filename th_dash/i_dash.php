@@ -5,7 +5,7 @@ session_start();
 	include("../functions.php");
 
 	$user_data = check_login($con);
-    ad_check($_SESSION['role']);
+    tc_check($_SESSION['role']);
     
     
 ?>
@@ -38,17 +38,12 @@ session_start();
             </div>
             <ul class="list-unstyled components text-secondary">
                 <li>
-                    <a href="tc_dash.php"><i class="fas fa-home"></i> Dashboard</a>
+                    <a href="i_dash.php"><i class="fas fa-home"></i> Dashboard</a>
                 </li>
                 <li>
                     <a href="forms.php"><i class="fas fa-file-alt"></i>Create Blog</a>
                 </li>
-                <li>
-                    <a href="qrc.php"><i class="fas fa-file-alt"></i>QR Code Generator</a>
-                </li>
-                <li>
-                    <a href="add_tc.php"><i class="fas fa-file-alt"></i>Account Creation</a>
-                </li>
+                
                 
             </ul>
                
@@ -209,9 +204,9 @@ session_start();
             <tr>
               <th scope="col">No.</th>
               <th scope="col">Subject</th>
+              
               <th scope="col">Uploaded By</th>
               <th scope="col">LINK</th>
-              <th scope="col">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -219,18 +214,14 @@ session_start();
             <?php 
             
 	            $id = $_SESSION['user_id'];
-	            $query = "select * from file_details where 1 ";
+	            $query = "select * from file_details where user_id= '$id' ";
 
 	            $result = mysqli_query($con,$query);
             if (mysqli_num_rows($result) > 0) {
 		 
             while($row = mysqli_fetch_assoc($result)){
                 
-            echo "<tr><td>1</td><td>{$row['subject']}</td><td>{$row['uploaded_by']}</td><td><a href='{$row['file_path']}'>download</a></td><td><form action='delete.php' method='POST' ><input
-
-            type='hidden' name='id' value=". $row['N_id'] .
-            
-            "><input type='submit' class='btn btn-sm btn-danger' name='submit' value='Delete'></form></td></tr>\n ";
+            echo "<tr><th>1</th><th>{$row['subject']}</th><th>{$row['uploaded_by']}</th><th><a href='{$row['file_path']}'>download</a></th></tr>\n ";
               } } else {
                 echo ' <tr>
                 <th colspan="5"><center>No-Records</center> </th>
@@ -265,6 +256,3 @@ session_start();
 </body>
 
 </html>
-<?php
-
-?>

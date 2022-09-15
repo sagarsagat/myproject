@@ -97,7 +97,7 @@ session_start();
                   <li><a class="dropdown-item" href="#">J2EE</a></li>
                 </ul>
               </div></th>
-              <th scope="col">time</th>
+              
               <th scope="col">Uploaded By</th>
               <th scope="col">LINK</th>
             </tr>
@@ -111,14 +111,17 @@ session_start();
 
 	            $result = mysqli_query($con,$query);
             if (mysqli_num_rows($result) > 0) {
-		 
+              $i=1;
             while($row = mysqli_fetch_assoc($result)){
-            echo "<tr><th>1</th><th>{$row['subject']}</th><th>{$row['date']}</th><th>{$row['uploaded_by']}</th><th><a href='th_dash/{$row['file_path']}'>download</a></th></tr>\n ";
-              } } else {
+              
+            echo "<tr><th>$i</th><th>{$row['subject']}</th><th>{$row['uploaded_by']}</th><th><a href='th_dash/{$row['file_path']}'>download</a></th></tr>\n ";
+            $i=$i+1;    
+          } } else {
                 echo ' <tr>
                 <th colspan="5"><center>No-Records</center> </th>
                 
-                  </tr>';
+                  </tr><br><br><br><br><br><br><br><br>';
+                  
               }
               ?>
               

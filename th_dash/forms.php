@@ -38,7 +38,7 @@ session_start();
             </div>
             <ul class="list-unstyled components text-secondary">
                 <li>
-                    <a href="tc_dash.php"><i class="fas fa-home"></i> Dashboard</a>
+                    <a href="i_dash.php"><i class="fas fa-home"></i> Dashboard</a>
                 </li>
                 
                 
@@ -77,23 +77,17 @@ session_start();
             <div class="content">
                 <div class="container">
                     <div class="page-title">
-                        <h3>Theory Notes</h3>
+                        <h3>Blog</h3>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
-                                <div class="card-header">Upload <div><?php
-                                    if (isset($_SESSION['message']) && $_SESSION['message'])
-                                    {
-                                      printf('<b>%s</b>', $_SESSION['message']);
-                                      unset($_SESSION['message']);
-                                         }
-                                     ?></div></div>
+                                <div class="card-header">Upload <div></div></div>
                                 <div class="card-body">
                                 
                                     <form accept-charset="utf-8" method="POST" action="upload.php" enctype="multipart/form-data">
                                         <div class="mb-3">
-                                            <label for="nn" class="form-label">Name of notes</label>
+                                            <label for="nn" class="form-label">Name of topic</label>
                                             <input type="text" name="nn" placeholder="Notes" class="form-control" required>
                                         </div>
                                         <div class="mb-3">
@@ -113,12 +107,9 @@ session_start();
                                             <label for="dc" class="form-label">Description</label>
                                             <input type="text" name="dc" placeholder="Detailed-Description" class="form-control" required>
                                         </div>
+                                        
                                         <div class="mb-3">
-                                            <label for="uploadedFile" class="form-label">Select</label>
-                                            <input class="form-control form-control-sm" name="uploadedFile"   id="formFileSm" type="file"  accept="application/pdf" required  />
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="submit" class="btn btn-primary" name="uploadBtn" value="Upload">
+                                            <input type="submit" class="btn btn-primary" name="uploadBtn" value="Submit">
                                         </div>
                                     </form>
     

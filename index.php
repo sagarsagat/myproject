@@ -443,19 +443,19 @@ session_start();
         <!-- Modal body -->
         <div class="modal-body" id="lk">
         <div class="col align-self-center">
-      <a href="">--------sample notification--------</a>
+      <a href=""> notes by Dr Rajesh K M  data mining chapter-3</a>
       
             </div><br>
             <div class="col align-self-center">
-      <a href="">--------sample notification--------</a>
+      <a href=""> notes by Dr Rajesh K M  data mining chapter-2</a>
       
             </div><br>
             <div class="col align-self-center">
-      <a href="">--------sample notification--------</a>
+      <a href=""> notes by vinay  operational research chapter-3</a>
       
             </div><br>
             <div class="col align-self-center">
-      <a href="">--------sample notification--------</a>
+      <a href="">notes by vinay  EVS chapter-4</a>
       
             </div><br>
          

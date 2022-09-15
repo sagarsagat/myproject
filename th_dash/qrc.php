@@ -101,6 +101,7 @@ session_start();
                         <th>Username</th>
                         <th>QR CODE</th>
                         <th>link</th>
+                        <th>action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -114,10 +115,12 @@ session_start();
                     $i=1;
                 while($row = mysqli_fetch_assoc($result)){      
 
-                    echo "<tr><th>".$i++."</th><th>{$row['user_name']}</th>
-                    <th><img src='../{$row['qr_path']}' width='50px' height='50px' ></th><th><button type='button' class='btn btn-primary' ><a href='../{$row['qr_path']}'>download</a></button></th>
-                    </tr> \n ";
+                    echo "<tr><td>".$i++."</td><td>{$row['user_name']}</td>
+                    <td><img src='{$row['qr_path']}' width='50px' height='50px' ></td><td><button type='button' class='btn btn-primary' ><a href='../{$row['qr_path']}'>download</a></button></td><td><form action='d_u.php' method='POST' ><input
 
+                    type='hidden' name='id' value=" . $row['user_id'] . " ><input type='submit' class='btn btn-sm btn-danger' name='submit' value='Delete'></form></td>
+                    </tr> \n ";
+                        
                  
 
                             }

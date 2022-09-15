@@ -35,9 +35,14 @@
 						$_SESSION['un'] = $user_data['user_name'];
 						$_SESSION['role'] = $user_data['role'];
 						$_SESSION["log"]="Logout";
-						if($_SESSION['role'] =="teacher"){
+						if($_SESSION['role'] == "admin"){
 						header("Location: th_dash/tc_dash.php");
-						die;}else{
+						die;
+						}else if($_SESSION['role'] == "teacher"){
+							header("Location: th_dash/i_dash.php");
+							die;
+							}
+						else{
 							header("Location: index.php");
 						die;
 						}

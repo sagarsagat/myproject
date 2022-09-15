@@ -9,7 +9,9 @@
 		//something was posted
 		$user_name = $_POST['name'];
 		 $user_email = $_POST['email'];
-		$role=$_POST['role'];
+		 
+			
+		
 		$password = $_POST['password'];
 
 		if(!empty($user_name) && !empty($password) && !is_numeric($user_name))
@@ -18,12 +20,9 @@
 			//save to database
 			$hash=password_hash($password,PASSWORD_DEFAULT);
 			$user_id = random_num(20);
-			$query = "insert into users (user_id,user_name,role,user_email,password) values ('$user_id','$user_name','$role','$user_email','$hash')";
-			$ob=" username :".$user_name."\n User_email:".$user_email."\n password :".$password;
-			$path=qr_g($ob);
-			$q2="insert into qr_d (user_id,user_name,qr_path) values ('$user_id','$user_name','$path')";
+			$query = "insert into users (user_id,user_name,role,user_email,password) values ('$user_id','$user_name','student','$user_email','$hash')";
+			
 			mysqli_query($con, $query);
-			mysqli_query($con,$q2);
 			header("Location: nav.php");
 			die;
 		}else
@@ -80,17 +79,7 @@
 										Email is invalid
 									</div>
 								</div>
-								<div class="mb-3">
-								<label class="mb-2 text-muted" for="role">Role:</label>
-								<select class="form-control" name="role" required>
-  								<option value="">Choose one</option>
-								  <option value="student">Student</option>
-								  <option value="teacher">Teacher</option>
-								</select>
-									<div class="invalid-feedback">
-										Please choose any one
-									</div>
-								</div>
+								
 
 								<div class="mb-3">
 									<label class="mb-2 text-muted" for="password">Password</label>

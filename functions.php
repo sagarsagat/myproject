@@ -47,20 +47,17 @@ function random_num($length)
 }
 
 function ad_check($role){
+	if($role != "admin"){
+		header("Location: ../index.php");
+	die;
+	}
+
+}
+function tc_check($role){
 	if($role != "teacher"){
 		header("Location: ../index.php");
 	die;
 	}
 
 }
-function qr_g($na){
-	include('phpqrcode/qrlib.php');
-	$path="th_dash/qrimg/";
-	$file=$path.uniqid().".png";
-	$ps=10;
-	$fs=10;
-	$ec='L';
-	QRcode::png($na,$file,$ec,$ps,$fs);
-	return $file;
 
-}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2022 at 04:15 PM
+-- Generation Time: Sep 14, 2022 at 06:31 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -40,6 +40,26 @@ CREATE TABLE `file_details` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `qr_d`
+--
+
+CREATE TABLE `qr_d` (
+  `user_id` int(10) NOT NULL,
+  `user_name` varchar(30) NOT NULL,
+  `qr_path` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `qr_d`
+--
+
+INSERT INTO `qr_d` (`user_id`, `user_name`, `qr_path`) VALUES
+
+(1234, 'admin', 'th_dash/qrimg/6321c6d40048a.png');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -56,8 +76,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `role`, `user_email`, `password`) VALUES
-(2147483647, 'sagar', 'teacher', 'sagar@gmail.com', '$2y$10$oRpQ8M8YPqFim8dq5x/UoOCulFT9V9.JRPU4jXXvG6K6tTjTVInPO'),
-(2147483647, 's', 'teacher', 's@c.n', '$2y$10$fZmJJophrc/8HDPyuh8Tkey.jYqWgscVcYSHIpFn/.AsrWnM3Jp12');
+(1234, 'admin', 'admin', 'Admin@enotesify.ml', '$2y$10$t8M1o7E0VOmxTJISpp8.W.mSsmuPPHmA311WRD.yBdB5lrhUNk9se');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
